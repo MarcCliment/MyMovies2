@@ -10,7 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Service
 public class MovieDBService {
-	@Value("${themoviedb.api_key}")
+	@Value("${themoviedatabase.api_key}")
 	private String api_key;
 
 	WebClient webClient = WebClient.create("https://api.themoviedb.org/3/");
@@ -30,12 +30,12 @@ public class MovieDBService {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public HashMap<String, Object> getMovie(String id) {
+	public HashMap<String, Object> getMovie(String movie_id) {
 		
 		HashMap<String, Object> x = webClient.get()
-				.uri(UriBuilder -> UriBuilder.path("/movie/{movie_id}")
-						.queryParam("api_key", "")
-						.build())
+				.uri(UriBuilder -> UriBuilder.path("movie/"+ movie_id)
+						.queryParam("api_key", api_key)
+						.build(movie_id))
 				.retrieve()
 				.bodyToMono(HashMap.class)
 				.block();

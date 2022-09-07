@@ -6,6 +6,6 @@ import com.example.gfttraining.Entity.UserMovie;
 
 public interface UserMovieRepository extends JpaRepository<UserMovie, Long>{
 
-   public Optional<UserMovie> findByUsernameAndMovie ( String username , Integer movie_id ) ;
+   public Optional<UserMovie> findByUsernameAndMovie ( String username , String movie_id ) ;
    
 }

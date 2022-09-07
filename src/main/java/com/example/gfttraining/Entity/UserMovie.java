@@ -7,18 +7,12 @@ import javax.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@ToString
-@Accessors(chain=true)
 @Entity
 @Table(name="user_movie")
 public class UserMovie {
 	
 	@Id
-	@Column(name = "id", nullable = false)
+	@Column(name = "movie_id", nullable = false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	String username;
@@ -26,4 +20,60 @@ public class UserMovie {
 	Boolean favorite;
 	Integer personal_rating;
 	String notes;
+	
+	public UserMovie() {
+		super();
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getMovie() {
+		return movie;
+	}
+
+	public void setMovie(String movie) {
+		this.movie = movie;
+	}
+
+	public Boolean getFavorite() {
+		return favorite;
+	}
+
+	public void setFavorite(Boolean favorite) {
+		this.favorite = favorite;
+	}
+
+	public Integer getPersonal_rating() {
+		return personal_rating;
+	}
+
+	public void setPersonal_rating(Integer personal_rating) {
+		this.personal_rating = personal_rating;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+	
+
+	
+	
 }
