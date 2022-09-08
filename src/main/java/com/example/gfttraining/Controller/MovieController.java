@@ -1,5 +1,6 @@
 package com.example.gfttraining.Controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,18 @@ public class MovieController {
 			movie.put("personal_rating", userMovie.getPersonal_rating());
 			movie.put("notes", userMovie.getNotes());
 		}
+		return movie;
+	}
+	
+	@GetMapping("/movie/top_rated")
+	public HashMap<String, Object> returnTopRatedMovies() throws IOException{
+		HashMap<String, Object> movie = movieService.findTopRatedMovies();
+		return movie;
+	}
+	
+	@GetMapping ("/movie/popular?api_key")
+	public HashMap<String, Object> returnPopularMovies() throws IOException{
+		HashMap<String, Object> movie = movieService.findPopularMovies();
 		return movie;
 	}
 }
