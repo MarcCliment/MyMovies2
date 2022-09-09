@@ -7,10 +7,17 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.gemfire.cache.config.EnableGemfireCaching;
+import org.springframework.data.gemfire.config.annotation.ClientCacheApplication;
+import org.springframework.data.gemfire.config.annotation.EnableCachingDefinedRegions;
+import org.apache.geode.cache.client.ClientRegionShortcut;
 
 @SpringBootApplication
-@EnableCaching
-@Configuration
+//@EnableCaching
+//@Configuration
+@ClientCacheApplication(name = "CachingGemFireApplication")
+@EnableCachingDefinedRegions(clientRegionShortcut = ClientRegionShortcut.LOCAL)
+@EnableGemfireCaching
 public class MyMovies2Application {
 
 	public static void main(String[] args) {
